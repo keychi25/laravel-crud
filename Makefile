@@ -1,3 +1,5 @@
+start:
+	docker compose up --build
 test:
 	docker exec laravel-app vendor/bin/phpunit
 
