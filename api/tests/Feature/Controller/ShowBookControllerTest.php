@@ -26,7 +26,7 @@ class ShowBookControllerTest extends TestCase
      * @test
      * @group controller
      */
-    public function 正常系(): void
+    public function test_正常系(): void
     {
         $response = $this->get('/api/books/1');
         $response->assertStatus(200);

@@ -24,7 +24,7 @@ class DeleteBookControllerTest extends TestCase
      * @test
      * @group controller
      */
-    public function 正常系(): void
+    public function test_正常系(): void
     {
         $response = $this->delete('/api/books/1');
         $response->assertStatus(204);

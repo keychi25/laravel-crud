@@ -25,7 +25,7 @@ class UpdateBookControllerTest extends TestCase
      * @test
      * @group controller
      */
-    public function 正常系(): void
+    public function test_正常系(): void
     {
         $request = [
             'title' => 'Ruby Book',
