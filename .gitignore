@@ -218,5 +218,6 @@ $RECYCLE.BIN/
 *.lnk
 
 
-docker/mysql/
+docker/mysql/*
+!docker/mysql/.keep
 # End of https://www.toptal.com/developers/gitignore/api/macos,phpstorm,visualstudiocode,laravel,windows
