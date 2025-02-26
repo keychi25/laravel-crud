@@ -1,0 +1,39 @@
+services:
+  nginx:
+    container_name: "laravel-nginx"
+    build:
+      context: ./docker/nginx
+    depends_on:
+      - api
+    ports:
+      - 80:80
+    volumes:
+      - ./:/api
+
+  api:
+    container_name: "laravel-app"
+    build:
+      context: ./docker/api
+    depends_on:
+      - mysql
+    volumes:
+      - ./api:/api
+      - ./docker/api/php.ini:/usr/local/etc/php/php.ini
+
+  mysql:
+    image: mysql:8.0.37
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    container_name: "laravel_mysql"
+    volumes:
+      - ./docker/mysql:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=laravel_db
+    ports:
+      - 13306:3306
+
+  redis:
+    image: redis:alpine
+    container_name: "laravel-redis"
+    ports:
+      - 16379:6379
