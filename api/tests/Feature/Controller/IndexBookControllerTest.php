@@ -4,6 +4,8 @@
 namespace Tests\Feature\Controller;
 
 use App\Models\Book;
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 
@@ -20,10 +22,8 @@ class IndexBookControllerTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     * @group controller
-     */
+    #[Test]
+    #[Group('controller')]
     public function test_正常系(): void
     {
         $response = $this->get('/api/books');

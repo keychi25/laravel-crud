@@ -4,6 +4,8 @@
 namespace Tests\Feature\Controller;
 
 use App\Models\Book;
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 
@@ -14,10 +16,8 @@ class StoreBookControllerTest extends TestCase
         parent::setUp();
     }
 
-    /**
-     * @test
-     * @group controller
-     */
+    #[Test]
+    #[Group('controller')]
     public function test_正常系(): void
     {
         $post = [
@@ -33,6 +33,8 @@ class StoreBookControllerTest extends TestCase
         ]);
     }
 
+    #[Test]
+    #[Group('controller')]
     public function test_タイトルは必須であること(): void
     {
         $post = [
@@ -43,6 +45,8 @@ class StoreBookControllerTest extends TestCase
         $response->assertStatus(422);
     }
 
+    #[Test]
+    #[Group('controller')]
     public function test_作者は必須であること(): void
     {
         $post = [

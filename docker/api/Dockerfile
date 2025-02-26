@@ -11,7 +11,9 @@ RUN apt-get update \
 	libmcrypt-dev \
 	libpng-dev \
 	libfontconfig1 \
-	libxrender1
+	libxrender1 \
+	&& pecl install xdebug \
+	&& docker-php-ext-enable xdebug
 
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg
 RUN docker-php-ext-install gd
