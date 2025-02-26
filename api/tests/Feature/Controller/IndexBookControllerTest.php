@@ -4,7 +4,6 @@
 namespace Tests\Feature\Controller;
 
 use App\Models\Book;
-use Illuminate\Support\Facades\DB;
 use Tests\TestCase;
 
 
@@ -13,12 +12,12 @@ class IndexBookControllerTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        DB::table('books')->insert([
+        Book::factory()->create(
             [
                 'title' => 'PHP Book',
                 'author' => 'PHPER',
-            ],
-        ]);
+            ]
+        );
     }
 
     /**

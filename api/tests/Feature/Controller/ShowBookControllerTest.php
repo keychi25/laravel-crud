@@ -13,12 +13,13 @@ class ShowBookControllerTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        DB::table('books')->insert([
+        Book::factory()->create(
             [
+                'id' => 1,
                 'title' => 'PHP Book',
                 'author' => 'PHPER',
-            ],
-        ]);
+            ]
+        );
     }
 
     /**
