@@ -8,6 +8,10 @@ name: Tag
 jobs:
   tag:
     runs-on: ubuntu-latest
+    permissions:
+      actions: write
+      checks: write
+      contents: write
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
 
@@ -15,6 +19,7 @@ jobs:
           git fetch --tags
 
       - run: |
+          chmod +x ./scripts/parse-dockerfile-from
           tag=$(./scripts/parse-dockerfile-from ./docker/nginx/Dockerfile | cut -f2)
           echo "tag: $tag"
           if ! git rev-parse --quiet --verify "refs/tags/$tag" > /dev/null; then
