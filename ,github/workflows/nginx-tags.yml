@@ -1,0 +1,23 @@
+on:
+  push:
+    branches:
+      - master
+
+name: Tag
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+
+      - run: |
+          git fetch --tags
+
+      - run: |
+          tag=$(./scripts/parse-dockerfile-from ./docker/nginx/Dockerfile | cut -f2)
+          echo "tag: $tag"
+          if ! git rev-parse --quiet --verify "refs/tags/$tag" > /dev/null; then
+            git tag "$tag"
+            git push --tags
+          fi
