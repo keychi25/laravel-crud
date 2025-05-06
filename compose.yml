@@ -16,6 +16,8 @@ services:
       context: ./docker/api
     depends_on:
       - mysql
+    extra_hosts:
+      - "host.docker.internal:${DOCKER_HOST_IP}" 
     volumes:
       - ./api:/api
       - ./docker/api/php.ini:/usr/local/etc/php/php.ini
